@@ -6,4 +6,5 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="db/changelog/changelog-v1-create-car_showroom-table.xml"/>
+    <include file="db/changelog/changelog-v2-create-car-table.xml"/>
 </databaseChangeLog>
