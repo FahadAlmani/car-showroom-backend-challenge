@@ -2,8 +2,6 @@ package com.challenge.showrooms.controller;
 
 import com.challenge.showrooms.DTO.CarDTO;
 import com.challenge.showrooms.DTO.CarListItemDTO;
-import com.challenge.showrooms.DTO.CarShowroomDTO;
-import com.challenge.showrooms.DTO.CarShowroomListItemDTO;
 import com.challenge.showrooms.service.CarService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/car")

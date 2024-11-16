@@ -1,6 +1,5 @@
 package com.challenge.showrooms.DTO;
 
-import com.challenge.showrooms.model.CarShowroom;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
