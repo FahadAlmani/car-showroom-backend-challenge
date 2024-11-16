@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.security.core.AuthenticationException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +28,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<String> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<String> handleAuthenticationException(AuthenticationException ex) {
+        return new ResponseEntity<>("Invalid username or password. Please try again.", HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> handleAuthenticationException(EntityNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

@@ -7,4 +7,5 @@
 
     <include file="db/changelog/changelog-v1-create-car_showroom-table.xml"/>
     <include file="db/changelog/changelog-v2-create-car-table.xml"/>
+    <include file="db/changelog/changelog-v3-create-user-table.xml"/>
 </databaseChangeLog>
