@@ -1,11 +1,10 @@
 package com.challenge.showrooms.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.SQLDelete;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +20,6 @@ public class CarShowroom {
     private String contactNumber;
     private String address;
     private boolean deleted = false;
+    @OneToMany(mappedBy = "carShowroom")
+    private List<Car> carList;
 }

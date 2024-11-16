@@ -6,6 +6,7 @@ import com.challenge.showrooms.Repository.CarShowroomRepository;
 import com.challenge.showrooms.model.CarShowroom;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -30,15 +31,14 @@ public class CarShowroomService {
         return modelMapper.map(newCarShowroom, CarShowroomDTO.class);
     }
 
-    public List<CarShowroomListItemDTO> findAllCarShowrooms(Integer offset, Integer pageSize, String field) {
+    public Page<CarShowroomListItemDTO> findAllCarShowrooms(Integer offset, Integer pageSize, String field) {
         PageRequest pageRequest = PageRequest.of(offset, pageSize).withSort(Sort.by(Sort.Direction.ASC, field));
-        List<CarShowroom> carShowroomList = carShowroomRepository.findAllByDeletedFalse(pageRequest);
-        return carShowroomList.stream().map(carShowroom -> modelMapper.map(carShowroom, CarShowroomListItemDTO.class)).toList();
+        Page<CarShowroom> carShowroomList = carShowroomRepository.findAllByDeletedFalse(pageRequest);
+        return carShowroomList.map(carShowroom -> modelMapper.map(carShowroom, CarShowroomListItemDTO.class));
     }
 
     public CarShowroomDTO findSpecificCarShowroom(Long carShowroomId) {
         CarShowroom carShowroom = carShowroomRepository.findByIdAndDeletedFalse(carShowroomId).orElse(null);
-
         return modelMapper.map(carShowroom, CarShowroomDTO.class);
     }
 

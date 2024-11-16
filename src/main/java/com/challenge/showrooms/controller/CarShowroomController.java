@@ -5,6 +5,7 @@ import com.challenge.showrooms.DTO.CarShowroomListItemDTO;
 import com.challenge.showrooms.service.CarShowroomService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,8 @@ public class CarShowroomController {
     }
 
     @GetMapping("/{offset}/{pageSize}/{field}")
-    public ResponseEntity<List<CarShowroomListItemDTO>> getAllShowrooms(@PathVariable Integer offset, @PathVariable Integer pageSize, @PathVariable String field) {
-        List<CarShowroomListItemDTO> carShowroomListItemListDTO = carShowroomService.findAllCarShowrooms(offset, pageSize, field);
+    public ResponseEntity<Page<CarShowroomListItemDTO>> getAllShowrooms(@PathVariable Integer offset, @PathVariable Integer pageSize, @PathVariable String field) {
+        Page<CarShowroomListItemDTO> carShowroomListItemListDTO = carShowroomService.findAllCarShowrooms(offset, pageSize, field);
 
         return new ResponseEntity<>(carShowroomListItemListDTO, HttpStatus.OK);
     }

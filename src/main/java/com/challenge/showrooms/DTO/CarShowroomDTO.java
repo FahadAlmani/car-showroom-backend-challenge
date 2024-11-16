@@ -1,9 +1,12 @@
 package com.challenge.showrooms.DTO;
 
+import com.challenge.showrooms.model.CarShowroom;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+
+import java.util.List;
 
 
 @Data
@@ -23,4 +26,5 @@ public class CarShowroomDTO {
     private String contactNumber;
     @Size(max = 255, message = "Address cannot be longer than 255 characters")
     private String address;
+    private List<CarDTO> carList;
 }
