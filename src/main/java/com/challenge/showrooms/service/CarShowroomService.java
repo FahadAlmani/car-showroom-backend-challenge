@@ -57,9 +57,11 @@ public class CarShowroomService {
         CarShowroom existCarShowroom = carShowroomRepository.findById(carShowroomId)
                 .orElseThrow(() -> new IllegalArgumentException("Car Showroom with ID " + carShowroomId + " not found"));
 
+        CarShowroomDTO carShowroomDTO = modelMapper.map(existCarShowroom, CarShowroomDTO.class);
+
         carShowroomRepository.deleteById(carShowroomId);
 
-        return modelMapper.map(existCarShowroom, CarShowroomDTO.class);
+        return carShowroomDTO;
     }
 
 }

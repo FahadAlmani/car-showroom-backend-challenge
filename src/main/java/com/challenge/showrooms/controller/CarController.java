@@ -23,9 +23,17 @@ public class CarController {
         return new ResponseEntity<>(createdCarDTO, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{carShowroomId}/{offset}/{pageSize}")
-    public ResponseEntity<Page<CarListItemDTO>> getAllShowrooms(@PathVariable Long carShowroomId,  @PathVariable Integer offset, @PathVariable Integer pageSize) {
-        Page<CarListItemDTO> carListItemDTOList = carService.findAllCarsByShowroomId(carShowroomId,offset, pageSize);
+    @GetMapping("/{carShowroomId}/{offset}/{pageSize}/{field}/{value}")
+    public ResponseEntity<Page<CarListItemDTO>> getAllCarsByShowroomId(@PathVariable Long carShowroomId,
+                                                                       @PathVariable Integer offset,
+                                                                       @PathVariable Integer pageSize,
+                                                                       @PathVariable String field,
+                                                                       @PathVariable String value) {
+        Page<CarListItemDTO> carListItemDTOList = carService.findAllCarsByShowroomId(carShowroomId,
+                offset,
+                pageSize,
+                field,
+                value);
 
         return new ResponseEntity<>(carListItemDTOList, HttpStatus.OK);
     }

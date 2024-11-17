@@ -32,7 +32,7 @@ public class CarShowroomController {
     }
 
     @GetMapping("/{carShowroomId}")
-    public ResponseEntity<CarShowroomDTO> getAllShowrooms(@PathVariable Long carShowroomId) {
+    public ResponseEntity<CarShowroomDTO> getShowroomById(@PathVariable Long carShowroomId) {
         CarShowroomDTO carShowroomDTO = carShowroomService.findSpecificCarShowroom(carShowroomId);
 
         return new ResponseEntity<>(carShowroomDTO, HttpStatus.OK);
