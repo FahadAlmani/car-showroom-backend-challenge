@@ -29,5 +29,5 @@ This project is a Spring Boot application built with **Java 21**, **Spring Boot 
 ### Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/FahadAlmani/car-showroom-challenge-backend.git
+cd car-showroom-challenge-backend
